@@ -27,6 +27,29 @@ class UserRepository extends EntityRepository
                               ->getSingleResult();
     }
 
+    public function getFindByFilterQuery(\CuteFlow\CoreBundle\Model\UserFilter $filter)
+    {
+        $query = $this->createQueryBuilder('u')
+                              ->where('u.deletedAt IS NULL');
+
+        if ($filter->getFirstname() != null) {
+            $query = $query->andWhere('u.firstName LIKE :firstname')
+                            ->setParameter('firstname', $filter->getFirstname()."%");
+        }
+
+        if ($filter->getLastname() != null) {
+            $query = $query->andWhere('u.lastName LIKE :lastname')
+                            ->setParameter('lastname', $filter->getLastname()."%");
+        }
+
+        if ($filter->getUsername() != null) {
+            $query = $query->andWhere('u.username LIKE :username')
+                            ->setParameter('username', $filter->getUsername()."%");
+        }
+
+        return $query->getQuery();
+    }
+
     public function getFindAllQuery()
     {
         return $this->createQueryBuilder('u')

@@ -4,6 +4,7 @@ namespace CuteFlow\CoreBundle\Controller;
 use CuteFlow\CoreBundle\Form\SettingsGeneralType;
 use CuteFlow\CoreBundle\Form\SettingsEmailType;
 use CuteFlow\CoreBundle\Form\UserFilterType;
+use CuteFlow\CoreBundle\Model\UserFilter;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -21,16 +22,18 @@ class UserController extends Controller
      */
     public function listAction()
     {
-        $em = $settings = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getEntityManager();
 
-        $settings = $em->find('CuteFlowCoreBundle:Settings', 1);
-
-        $query = $em->getRepository('CuteFlowCoreBundle:User')->getFindAllQuery();
+        $filter = $this->getRequest()->getSession()->get('user.filter', new UserFilter());
+        $filterForm = $this->createForm(new UserFilterType(), $filter);
+        $filterForm->bindRequest($this->getRequest());
+        $this->getRequest()->getSession()->set('user.filter', $filter);
+        
+        $query = $em->getRepository('CuteFlowCoreBundle:User')->getFindByFilterQuery($filter);
         $paginator = new \Pagerfanta\Pagerfanta(new \Pagerfanta\Adapter\DoctrineORMAdapter($query));
         $paginator->setMaxPerPage($this->container->getParameter('cuteflow.pagesize.default'));
         $paginator->setCurrentPage($this->get('request')->query->get('page', 1), false, true);
 
-        $filterForm = $this->createForm(new UserFilterType());
 
         return array('filterForm'=>$filterForm->createView(),
                      'paginator'=>$paginator);
