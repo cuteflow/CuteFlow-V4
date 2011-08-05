@@ -95,8 +95,8 @@
                 <target>Allgemein</target>
             </trans-unit>
             <trans-unit id="24">
-                <source>Workflowgroups</source>
-                <target>Workflowgruppen</target>
+                <source>Usergroups</source>
+                <target>Benutzergruppen</target>
             </trans-unit>
             <trans-unit id="25">
                 <source>Host</source>
@@ -249,6 +249,22 @@
             <trans-unit id="62">
                 <source>My Account</source>
                 <target>Mein Account</target>
+            </trans-unit>
+            <trans-unit id="63">
+                <source>New usergroup</source>
+                <target>Neue Benutzergruppe</target>
+            </trans-unit>
+            <trans-unit id="64">
+                <source>Edit usergroup</source>
+                <target>Benutzergruppe bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="65">
+                <source>Do you really want to delete this group</source>
+                <target>Wollen Sie diese Gruppe wirklich löschen</target>
+            </trans-unit>
+            <trans-unit id="66">
+                <source>Usergroup</source>
+                <target>Benutzergruppe</target>
             </trans-unit>
         </body>
     </file>

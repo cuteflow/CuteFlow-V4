@@ -21,9 +21,9 @@
         </a>
     </li>
     <li>
-        <a class="{{ app.request.attributes.get('_route') == 'cuteflow_admin_groups' ? 'selected' : '' }}" 
-           href="">
-            {% trans %}Workflowgroups{% endtrans %}
+        <a class="{{ app.request.attributes.get('_route') == 'cuteflow_usergroups' ? 'selected' : '' }}"
+           href="{{ path('cuteflow_admin_usergroup')}}">
+            {% trans %}Usergroups{% endtrans %}
         </a>
     </li>
     <li>

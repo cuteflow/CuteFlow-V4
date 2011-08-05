@@ -26,5 +26,11 @@ class UserFilterType extends AbstractType
                                     'label'=>'Username',
                                     'required'=>false
                                           ));
+
+        $builder->add('group', 'entity', array(
+                                    'class' => 'CuteFlow\\CoreBundle\\Entity\\UserGroup',
+                                    'required'=>false,
+                                    'label'=>'Usergroup',
+                     ));
     }
 }

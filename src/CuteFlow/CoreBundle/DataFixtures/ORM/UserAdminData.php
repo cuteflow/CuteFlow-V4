@@ -29,6 +29,11 @@ class UserAdminData implements FixtureInterface, ContainerAwareInterface
         $encoder = $this->container->get('security.encoder_factory')->getEncoder($userAdmin);
         $userAdmin->setPassword($encoder->encodePassword('admin', $userAdmin->getSalt()));
 
+        $group = new \CuteFlow\CoreBundle\Entity\UserGroup();
+        $group->setName('Testgroup');
+
+        $userAdmin->addGroups($group);
+
         $manager->persist($userAdmin);
         $manager->flush();
     }

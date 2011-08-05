@@ -42,5 +42,7 @@ class UserType extends AbstractType
                                     'label'=>'Has Admin-Rights',
                                     'required'=>false,
                                            ));
+
+        $builder->add('groups');
     }
 }

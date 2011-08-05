@@ -33,8 +33,18 @@ class UserFilter
         return $this->username;
     }
 
+    public function setGroup($group)
+    {
+        $this->group = $group;
+    }
+
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
     protected $firstname = null;
     protected $lastname = null;
     protected $username = null;
-
+    protected $group = null;
 }

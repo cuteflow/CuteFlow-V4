@@ -47,6 +47,13 @@ class UserRepository extends EntityRepository
                             ->setParameter('username', $filter->getUsername()."%");
         }
 
+        if ($filter->getGroup() != null) {
+            $group = $filter->getGroup();
+            $query = $query->innerJoin('u.groups', 'g')
+                            ->andWhere('g.id=:group')
+                            ->setParameter('group', $group->getId());
+        }
+
         return $query->getQuery();
     }
 

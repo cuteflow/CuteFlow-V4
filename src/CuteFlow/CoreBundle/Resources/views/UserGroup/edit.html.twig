@@ -1,0 +1,29 @@
+{% extends 'CuteFlowCoreBundle::admin.html.twig' %}
+
+{% block title %}{{ parent() }} - {% trans %}Administration{% endtrans %}{% endblock %}
+
+{% block sidebarclass %}class="nosidebar"{% endblock %}
+
+{% block body %}
+    <h2>{% trans %}Edit usergroup{% endtrans %}</h2>
+
+    {% if form_errors(edit_form) %}
+        <div class="flash error">
+            {{ form_errors(edit_form) }}
+        </div>
+        <br/>
+	{% endif %}
+
+    <form action="{{ path('cuteflow_admin_usergroup_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+        <div class="box tabular settings">
+            <p>
+                {{ form_label(edit_form.name) }}
+                {{ form_widget(edit_form.name) }}
+            </p>
+        </div>
+
+        {{ form_rest(edit_form) }}
+        <input type="submit" value="{% trans %}Save{% endtrans %}" name="commit"/>
+        &nbsp;&nbsp;&nbsp;<a href="{{ path('cuteflow_admin_usergroup') }}">{% trans %}Back to list{% endtrans %}</a>
+    </form>
+{% endblock %}

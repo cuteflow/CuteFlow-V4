@@ -1,0 +1,47 @@
+{% extends 'CuteFlowCoreBundle::admin.html.twig' %}
+
+{% block title %}{{ parent() }} - {% trans %}Administration{% endtrans %}{% endblock %}
+
+{% block contextual %}
+    <a class="icon icon-add" href="{{ path('cuteflow_admin_usergroup_new') }}">{% trans %}New usergroup{% endtrans %}</a>
+{% endblock %}
+
+{% block body %}
+    <h2>{% trans %}Usergroups{% endtrans %}</h2>
+     {% if (app.session.hasFlash('saved.successful')) %}
+        <div class="flash notice">
+            {% trans %}Group successfully saved{% endtrans %}
+        </div>
+        <br/>
+    {% endif %}
+
+    {% if (app.session.hasFlash('deleted.successful')) %}
+        <div class="flash notice">
+            {% trans %}Group successfully deleted{% endtrans %}
+        </div>
+        <br/>
+    {% endif %}
+
+    <table class="list">
+      <thead>
+        <tr>
+          <th>{% trans %}Name{% endtrans %}</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for entity in entities %}
+        <tr class="{{ cycle(['odd', 'even'], loop.index) }}">
+            <td>{{ entity.name }}</td>
+             <td>
+                <small><a href="{{ path('cuteflow_admin_usergroup_edit', {'id': entity.id}) }}" class="icon icon-edit">{% trans %}Edit{% endtrans %}</a></small>
+                <small><a href="{{ path('cuteflow_admin_usergroup_delete', {'id': entity.id}) }}" onclick="return confirm('{% trans %}Do you really want to delete this group?{% endtrans %}')" class="icon icon-del">{% trans %}Delete{% endtrans %}</a></small>
+            </td>
+        </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+
+{% endblock %}
+
+

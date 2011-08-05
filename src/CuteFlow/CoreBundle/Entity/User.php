@@ -111,7 +111,18 @@ class User implements UserInterface
      */
     protected $updatedAt;
 
-     /**
+    /**
+     *
+     * @ORM\ManyToMany(targetEntity="UserGroup", inversedBy="users")
+     * @ORM\JoinTable(name="cf_user_groups",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+     *      )
+     */
+    protected $groups;
+
+
+    /**
      * Set createdAt
      *
      * @param datetime $createdAt
@@ -443,7 +454,7 @@ class User implements UserInterface
     /**
      * Get deletedAt
      *
-     * @return datetime 
+     * @return datetime
      */
     public function getDeletedAt()
     {
@@ -470,4 +481,39 @@ class User implements UserInterface
         $this->plainPassword = $plainPassword;
     }
 
+
+    /**
+     * Add groups
+     *
+     * @param CuteFlow\CoreBundle\Entity\UserGroup $groups
+     */
+    public function addGroups(\CuteFlow\CoreBundle\Entity\UserGroup $groups)
+    {
+        $this->groups[] = $groups;
+    }
+
+    /**
+     * Get groups
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getGroups()
+    {
+        return $this->groups;
+    }
+
+    /**
+     * Gets the name of the groups which includes the user.
+     *
+     * @return array
+     */
+    public function getGroupNames()
+    {
+        $names = array();
+        foreach ($this->getGroups() as $group) {
+            $names[] = $group->getName();
+        }
+
+        return $names;
+    }
 }
