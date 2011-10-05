@@ -18,14 +18,10 @@ use Monolog\Logger;
  *
  * @author Eric Clemmons (@ericclemmons) <eric@uxdriven.com>
  * @author Christophe Coevoet <stof@notk.org>
+ * @author Kirill chEbba Chebunin <iam@chebba.org>
  */
-class WildfireFormatter extends LineFormatter
+class WildfireFormatter implements FormatterInterface
 {
-    /**
-     * Similar to LineFormatter::SIMPLE_FORMAT, except without the "[%datetime%]"
-     */
-    const SIMPLE_FORMAT = "%message% %context% %extra%";
-
     /**
      * Translates Monolog log levels to Wildfire levels.
      */
@@ -54,8 +50,16 @@ class WildfireFormatter extends LineFormatter
             unset($record['extra']['line']);
         }
 
-        // Format record according with LineFormatter
-        $message = parent::format($record);
+        $message = array('message' => $record['message']);
+        if ($record['context']) {
+            $message['context'] = $record['context'];
+        }
+        if ($record['extra']) {
+            $message['extra'] = $record['extra'];
+        }
+        if (count($message) === 1) {
+            $message = reset($message);
+        }
 
         // Create JSON object describing the appearance of the message in the console
         $json = json_encode(array(

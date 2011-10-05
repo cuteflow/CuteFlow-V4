@@ -1,9 +1,9 @@
 <?php
 
-namespace Bundle\GravatarBundle\Tests;
+namespace Ornicar\GravatarBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
-use Bundle\GravatarBundle\GravatarApi;
+use Ornicar\GravatarBundle\GravatarApi;
 
 class GravatarApiTest extends TestCase
 {
@@ -11,6 +11,12 @@ class GravatarApiTest extends TestCase
     {
         $api = new GravatarApi();
         $this->assertEquals('http://www.gravatar.com/avatar/0aa61df8e35327ac3b3bc666525e0bee?s=80&r=g', $api->getUrl('henrik@bearwoods.dk'));
+    }
+
+    public function testGravatarSecureUrlWithDefaultOptions()
+    {
+        $api = new GravatarApi();
+        $this->assertEquals('https://secure.gravatar.com/avatar/0aa61df8e35327ac3b3bc666525e0bee?s=80&r=g', $api->getUrl('henrik@bearwoods.dk', null, null, null, true));
     }
 
     public function testGravatarUrlWithDefaultImage()

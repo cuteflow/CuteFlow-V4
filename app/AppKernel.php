@@ -19,8 +19,8 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle(),
             new CuteFlow\CoreBundle\CuteFlowCoreBundle(),
-            new Bundle\GravatarBundle\GravatarBundle(),
-            //new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
         );

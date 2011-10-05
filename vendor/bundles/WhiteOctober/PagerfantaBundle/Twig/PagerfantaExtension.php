@@ -12,6 +12,7 @@
 namespace WhiteOctober\PagerfantaBundle\Twig;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Form\Util\PropertyPath;
 use Pagerfanta\PagerfantaInterface;
 
 /**
@@ -52,11 +53,12 @@ class PagerfantaExtension extends \Twig_Extension
      *
      * @return string The pagerfanta rendered.
      */
-    public function renderPagerfanta(PagerfantaInterface $pagerfanta, $viewName, array $options = array())
+    public function renderPagerfanta(PagerfantaInterface $pagerfanta, $viewName = 'default', array $options = array())
     {
         $options = array_replace(array(
-            'routeName'   => null,
-            'routeParams' => array(),
+            'routeName'     => null,
+            'routeParams'   => array(),
+            'pageParameter' => 'page',
         ), $options);
 
         $router = $this->container->get('router');
@@ -73,10 +75,12 @@ class PagerfantaExtension extends \Twig_Extension
             }
         }
 
-        $routeName = $options['routeName'];
-        $routeParams = $options['routeParams'];
-        $routeGenerator = function($page) use($router, $routeName, $routeParams) {
-            return $router->generate($routeName, array_merge($routeParams, array('page' => $page)));
+        $routeName        = $options['routeName'];
+        $routeParams      = $options['routeParams'];
+        $pagePropertyPath = new PropertyPath($options['pageParameter']);
+        $routeGenerator = function($page) use($router, $routeName, $routeParams, $pagePropertyPath) {
+            $pagePropertyPath->setValue($routeParams, $page);
+            return $router->generate($routeName, $routeParams);
         };
 
         return $this->container->get('white_october_pagerfanta.view_factory')->get($viewName)->render($pagerfanta, $routeGenerator, $options);

@@ -20,6 +20,14 @@ To send a Message:
 
 * Send the message via the ``send()`` method on the Mailer object.
 
+.. caution::
+
+    The ``Swift_SmtpTransport`` and ``Swift_SendmailTransport`` transports use
+    ``proc_*`` PHP functions, which might not be available on your PHP
+    installation. You can easily check if that the case by running the
+    following PHP script: ``<?php echo function_exists('proc_open') ? "Yep,
+    that will work" : "Sorry, that won't work"; ``
+
 When using ``send()`` the message will be sent just like it would
 be sent if you used your mail client. An integer is returned which includes
 the number of successful recipients. If none of the recipients could be sent
@@ -409,7 +417,7 @@ Using the ``send()`` Method
 
 The ``send()`` method of the ``Swift_Mailer`` class
 sends a message using exactly the same logic as your Desktop mail client would
-use. Just pass it a Messgae and get a result.
+use. Just pass it a Message and get a result.
 
 To send a Message with ``send()``:
 

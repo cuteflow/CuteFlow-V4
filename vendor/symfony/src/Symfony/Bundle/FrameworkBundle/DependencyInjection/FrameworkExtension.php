@@ -342,6 +342,19 @@ class FrameworkExtension extends Extension
             $namedPackages,
         ));
 
+        // Apply request scope to assets helper if one or more packages are request-scoped
+        $requireRequestScope = array_reduce(
+            $namedPackages,
+            function($v, Reference $ref) use ($container) {
+                return $v || 'request' === $container->getDefinition($ref)->getScope();
+            },
+            'request' === $defaultPackage->getScope()
+        );
+
+        if ($requireRequestScope) {
+            $container->getDefinition('templating.helper.assets')->setScope('request');
+        }
+
         if (!empty($config['loaders'])) {
             $loaders = array_map(function($loader) { return new Reference($loader); }, $config['loaders']);
 
@@ -524,7 +537,7 @@ class FrameworkExtension extends Extension
         $container->setParameter('validator.mapping.loader.xml_files_loader.mapping_files', $this->getValidatorXmlMappingFiles($container));
         $container->setParameter('validator.mapping.loader.yaml_files_loader.mapping_files', $this->getValidatorYamlMappingFiles($container));
 
-        if ($config['enable_annotations']) {
+        if (array_key_exists('enable_annotations', $config) && $config['enable_annotations']) {
             $loaderChain = $container->getDefinition('validator.mapping.loader.loader_chain');
             $arguments = $loaderChain->getArguments();
             array_unshift($arguments[0], new Reference('validator.mapping.loader.annotation_loader'));

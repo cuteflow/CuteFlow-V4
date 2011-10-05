@@ -32,7 +32,6 @@ class CompassFilter implements FilterInterface
     private $noCache;
 
     // compass options
-    private $config;
     private $force;
     private $style;
     private $quiet;
@@ -227,7 +226,7 @@ class CompassFilter implements FilterInterface
         if (count($optionsConfig)) {
             $config = array();
             foreach ($this->plugins as $plugin) {
-                $config[] = sprintf("require '%s'", addcslahes($plugin, '\\'));
+                $config[] = sprintf("require '%s'", addcslashes($plugin, '\\'));
             }
             foreach ($optionsConfig as $name => $value) {
                 if (!is_array($value)) {
@@ -237,13 +236,9 @@ class CompassFilter implements FilterInterface
                 }
             }
 
-            $config = implode("\n", $config)."\n";
-            $this->config = tempnam($tempDir, 'assetic_compass');
-            file_put_contents($this->config, $config);
-        }
-
-        if ($this->config) {
-            $pb->add('--config')->add($this->config);
+            $configFile = tempnam($tempDir, 'assetic_compass');
+            file_put_contents($configFile, implode("\n", $config)."\n");
+            $pb->add('--config')->add($configFile);
         }
 
         $pb->add('--sass-dir')->add('')->add('--css-dir')->add('');
@@ -276,18 +271,19 @@ class CompassFilter implements FilterInterface
 
         if (0 < $code) {
             unlink($input);
-            if (is_file($this->config)) {
-                unlink($this->config);
+            if (isset($configFile)) {
+                unlink($configFile);
             }
-            throw new \RuntimeException($proc->getErrorOutput());
+
+            throw new \RuntimeException($proc->getErrorOutput() ?: $proc->getOutput());
         }
 
         $asset->setContent(file_get_contents($output));
 
         unlink($input);
         unlink($output);
-        if (is_file($this->config)) {
-            unlink($this->config);
+        if (isset($configFile)) {
+            unlink($configFile);
         }
     }
 

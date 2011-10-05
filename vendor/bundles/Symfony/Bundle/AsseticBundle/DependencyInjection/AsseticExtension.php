@@ -46,7 +46,8 @@ class AsseticExtension extends Extension
         $config = $processor->processConfiguration($configuration, $configs);
 
         $container->setParameter('assetic.debug', $config['debug']);
-        $container->setParameter('assetic.use_controller', $config['use_controller']);
+        $container->setParameter('assetic.use_controller', $config['use_controller']['enabled']);
+        $container->setParameter('assetic.enable_profiler', $config['use_controller']['profiler']);
         $container->setParameter('assetic.read_from', $config['read_from']);
         $container->setParameter('assetic.write_to', $config['write_to']);
 
@@ -107,14 +108,17 @@ class AsseticExtension extends Extension
         $container->setParameter('assetic.twig_extension.functions', $config['twig']['functions']);
 
         // choose dynamic or static
-        if ($container->getParameterBag()->resolveValue($container->getParameterBag()->get('assetic.use_controller'))) {
+        if ($useController = $container->getParameterBag()->resolveValue($container->getParameterBag()->get('assetic.use_controller'))) {
             $loader->load('controller.xml');
             $container->getDefinition('assetic.helper.dynamic')->addTag('templating.helper', array('alias' => 'assetic'));
             $container->removeDefinition('assetic.helper.static');
         } else {
-            $loader->load('asset_writer.xml');
             $container->getDefinition('assetic.helper.static')->addTag('templating.helper', array('alias' => 'assetic'));
             $container->removeDefinition('assetic.helper.dynamic');
+        }
+
+        if (isset($config['dump_on_warmup']) ? $config['dump_on_warmup'] : !$useController) {
+            $loader->load('asset_writer.xml');
         }
 
         // bundle and kernel resources

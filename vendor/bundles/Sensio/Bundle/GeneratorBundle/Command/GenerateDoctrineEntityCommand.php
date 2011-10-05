@@ -57,15 +57,15 @@ The command can also generate the corresponding entity repository class with the
 
 <info>php app/console doctrine:generate:entity --entity=AcmeBlogBundle:Blog/Post --with-repository</info>
 
-By default, the command uses YAML for the mapping information; change it
+By default, the command uses annotations for the mapping information; change it
 with <comment>--format</comment>:
 
-<info>php app/console doctrine:generate:entity --entity=AcmeBlogBundle:Blog/Post --format=annotation</info>
+<info>php app/console doctrine:generate:entity --entity=AcmeBlogBundle:Blog/Post --format=yml</info>
 
 To deactivate the interaction mode, simply use the `--no-interaction` option
 whitout forgetting to pass all needed options:
 
-<info>php app/console doctrine:generate:entity --entity=AcmeBlogBundle:Blog/Post --format=annotation --field="title:string(255) body:text" --with-repository --no-interaction</info>
+<info>php app/console doctrine:generate:entity --entity=AcmeBlogBundle:Blog/Post --format=annotation --fields="title:string(255) body:text" --with-repository --no-interaction</info>
 EOT
         );
     }
@@ -121,6 +121,12 @@ EOT
             $entity = $dialog->askAndValidate($output, $dialog->getQuestion('The Entity shortcut name', $input->getOption('entity')), array('Sensio\Bundle\GeneratorBundle\Command\Validators', 'validateEntityName'), false, $input->getOption('entity'));
 
             list($bundle, $entity) = $this->parseShortcutNotation($entity);
+
+            // check reserved words
+            if ($this->getGenerator()->isReservedKeyword($entity)){
+                $output->writeln(sprintf('<bg=red> "%s" is a reserved word</>.', $entity));
+                continue;
+            }
 
             try {
                 $b = $this->getContainer()->get('kernel')->getBundle($bundle);
@@ -242,9 +248,15 @@ EOT
 
         while (true) {
             $output->writeln('');
-            $name = $dialog->askAndValidate($output, $dialog->getQuestion('New field name (press <return> to stop adding fields)', null), function ($name) use ($fields) {
+            $self = $this;
+            $name = $dialog->askAndValidate($output, $dialog->getQuestion('New field name (press <return> to stop adding fields)', null), function ($name) use ($fields, $self) {
                 if (isset($fields[$name]) || 'id' == $name) {
                     throw new \InvalidArgumentException(sprintf('Field "%s" is already defined.', $name));
+                }
+
+                // check reserved words
+                if ($self->getGenerator()->isReservedKeyword($name)){
+                    throw new \InvalidArgumentException(sprintf('Name "%s" is a reserved word.', $name));
                 }
 
                 return $name;
@@ -275,7 +287,7 @@ EOT
         return $fields;
     }
 
-    protected function getGenerator()
+    public function getGenerator()
     {
         if (null === $this->generator) {
             $this->generator = new DoctrineEntityGenerator($this->getContainer()->get('filesystem'), $this->getContainer()->get('doctrine'));

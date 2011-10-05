@@ -51,9 +51,18 @@ class MainConfiguration implements ConfigurationInterface
         $builder->root('assetic')
             ->children()
                 ->booleanNode('debug')->defaultValue('%kernel.debug%')->end()
-                ->booleanNode('use_controller')->defaultValue('%kernel.debug%')->end()
+                ->arrayNode('use_controller')
+                    ->addDefaultsIfNotSet()
+                    ->treatTrueLike(array('enabled' => true))
+                    ->treatFalseLike(array('enabled' => false))
+                    ->children()
+                        ->booleanNode('enabled')->defaultValue('%kernel.debug%')->end()
+                        ->booleanNode('profiler')->defaultFalse()->end()
+                    ->end()
+                ->end()
                 ->scalarNode('read_from')->defaultValue('%kernel.root_dir%/../web')->end()
                 ->scalarNode('write_to')->defaultValue('%assetic.read_from%')->end()
+                ->booleanNode('dump_on_warmup')->end()
                 ->scalarNode('java')->defaultValue(function() use($finder) { return $finder->find('java', '/usr/bin/java'); })->end()
                 ->scalarNode('node')->defaultValue(function() use($finder) { return $finder->find('node', '/usr/bin/node'); })->end()
                 ->scalarNode('sass')->defaultValue(function() use($finder) { return $finder->find('sass', '/usr/bin/sass'); })->end()
@@ -141,6 +150,15 @@ class MainConfiguration implements ConfigurationInterface
                             ->ifTrue(function($v) { return !is_array($v); })
                             ->thenInvalid('The assetic.filters config %s must be either null or an array.')
                         ->end()
+                    ->end()
+                    ->validate()
+                        ->always(function($v) use ($finder) {
+                            if (isset($v['compass']) && !isset($v['compass']['bin'])) {
+                                $v['compass']['bin'] = $finder->find('compass', '/usr/bin/compass');
+                            }
+
+                            return $v;
+                        })
                     ->end()
                 ->end()
             ->end()
