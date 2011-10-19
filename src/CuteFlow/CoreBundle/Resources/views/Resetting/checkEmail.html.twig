@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% stylesheets 
+            '@CuteFlowCoreBundle/Resources/public/css/application.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+    <link rel="stylesheet" href="{{ asset("bundles/cuteflowcore/css/theme/" ~ app.session.get('cuteflow_theme') ~ "/application.css") }}" />
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ "user.title.administration" | trans }}{% endblock %}
+
+{% block sidebarclass %}class="nosidebar"{% endblock %}
+
+{% block body %}
+    <h2>{{ "user.header.check_email" | trans }}</h2>
+    <p>{{ "user.checkemail.please_check_your_email" | trans }}</p>
+{% endblock %}

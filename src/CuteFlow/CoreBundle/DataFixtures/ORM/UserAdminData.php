@@ -32,7 +32,7 @@ class UserAdminData implements FixtureInterface, ContainerAwareInterface
         $group = new \CuteFlow\CoreBundle\Entity\UserGroup();
         $group->setName('Testgroup');
 
-        $userAdmin->addGroups($group);
+//        $userAdmin->addGroups($group);
 
         $manager->persist($userAdmin);
         $manager->flush();

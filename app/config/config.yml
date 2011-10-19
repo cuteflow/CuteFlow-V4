@@ -51,16 +51,23 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: %mailer_transport%
-    host:      %mailer_host%
-    username:  %mailer_user%
-    password:  %mailer_password%
+    transport:  smtp
+    encryption: ssl
+    auth_mode:  login
+    host:       smtp.gmail.com
+    username:   thanhson1085@gmail.com
+    password:   camkythihoa
+
+    #transport: %mailer_transport%
+    #host:      %mailer_host%
+    #username:  %mailer_user%
+    #password:  %mailer_password%
 
 jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
 
-ornicar_gravatar: ~
+#ornicar_gravatar: ~
 
 #stof_doctrine_extensions:
 #    default_locale: en_US

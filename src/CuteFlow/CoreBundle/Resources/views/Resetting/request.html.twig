@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% stylesheets 
+            '@CuteFlowCoreBundle/Resources/public/css/application.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+    <link rel="stylesheet" href="{{ asset("bundles/cuteflowcore/css/theme/" ~ app.session.get('cuteflow_theme') ~ "/application.css") }}" />
+{% endblock %}
+
+{% block title %}{{ parent() }} - {{ "user.title.administration" | trans }}{% endblock %}
+
+{% block sidebarclass %}class="nosidebar"{% endblock %}
+
+{% block body %}
+    <h2>{{ "user.header.request" | trans }}</h2>
+	<form action="{{ path('cuteflow_user_resetting_send_email') }}" method="POST" class="cuteflow_user_resetting_request">
+	    <div>
+		{% if invalid_username is defined %}
+		    <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}, 'CuteFlowCoreBundle') }}</p>
+		{% endif %}
+		<label for="username">{{ 'resetting.request.username'|trans({}, 'CuteFlowCoreBundle') }}</label>
+		<input type="text" id="username" name="username" />
+	    </div>
+	    <div>
+		<input type="submit" value="{{ 'resetting.request.submit'|trans({}, 'CuteFlowCoreBundle') }}" />
+	    </div>
+	</form>
+
+{% endblock %}

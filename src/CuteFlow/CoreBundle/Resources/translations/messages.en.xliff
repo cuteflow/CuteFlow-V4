@@ -248,7 +248,7 @@
                 <target>Administrator</target>
             </trans-unit>
             <trans-unit id="62">
-                <source>user.label..last_login</source>
+                <source>user.label.last_login</source>
                 <target>Last login</target>
             </trans-unit>
             <trans-unit id="63">
@@ -281,7 +281,7 @@
             </trans-unit>
             <trans-unit id="70">
                 <source>user.label.new_user</source>
-                <target>Email</target>
+                <target>New User</target>
             </trans-unit>
             <trans-unit id="71">
                 <source>admin.header.settings</source>

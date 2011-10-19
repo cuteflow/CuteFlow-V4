@@ -21,11 +21,14 @@ security:
         css:
             pattern: /css/.*
             security: false
+        user:
+            pattern: /user/.*
+            security: false
             
         login:
             pattern:  ^/login$
             security: false
-            
+       
         main:
             pattern:      /.*
             form_login:   
