@@ -112,6 +112,15 @@ class User implements UserInterface
     protected $updatedAt;
 
     /**
+     * Random string sent to the user email address in order to verify it
+     *
+     * @var string
+     * @ORM\Column(name="confirmation_token", type="string", length="255")
+     */
+    protected $confirmationToken;
+
+
+    /**
      *
      * @ORM\ManyToMany(targetEntity="UserGroup", inversedBy="users")
      * @ORM\JoinTable(name="cf_user_groups",
@@ -516,4 +525,25 @@ class User implements UserInterface
 
         return $names;
     }
+
+    /**
+     * Gets the confirmation token.
+     *
+     * @return string
+     */
+    public function getConfirmationToken()
+    {
+        return $this->confirmationToken;
+    }
+
+    /**
+     * Sets the confirmation token
+     *
+     * @param string $confirmationToken
+     */
+    public function setConfirmationToken($confirmationToken)
+    {
+        $this->confirmationToken = $confirmationToken;
+    }
+
 }

@@ -8,9 +8,6 @@
 
 
 
-<<<<<<< .mine
-{% block title %}{{ parent() }} - {% trans %}Administration{% endtrans %}{% endblock %}
-=======>>>>>>> .theirs
 {% block contextual %}
     <a class="icon icon-add" href="{{ path('cuteflow_admin_user_create') }}">{{ "user.label.new_user" | trans }}</a>
 {% endblock %}
@@ -41,7 +38,7 @@
           <th>{{ "user.label.email" | trans }}</th>
           <th>{{ "user.label.username" | trans }}</th>
           <th>{{ "user.label.administrator" | trans }}</th>
-          <th>{{ "user.label..last_login" | trans }}</th>
+          <th>{{ "user.label.last_login" | trans }}</th>
           <th>&nbsp;</th>
         </tr>
       </thead>

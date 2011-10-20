@@ -25,7 +25,7 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         $filter = $this->getRequest()->getSession()->get('user.filter', new UserFilter());
-        $filter->setGroup($em->merge($filter->getGroup()));     // needed to reattach the deserialized session entity
+//        $filter->setGroup($em->merge($filter->getGroup()));     // needed to reattach the deserialized session entity
 
         $filterForm = $this->createForm(new UserFilterType(), $filter);
         $filterForm->bindRequest($this->getRequest());

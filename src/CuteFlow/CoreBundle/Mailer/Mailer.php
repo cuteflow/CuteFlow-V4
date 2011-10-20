@@ -30,6 +30,28 @@ class Mailer
      * @param CuteFlow\CoreBundle\Entity\User $user
      * @return void
      */
+    public function sendResettingEmailMessage(User $user)
+    {
+        if ($this->settingsManager->getSettings()->getEmailFormat() == 'text/plain') {
+            $template = $this->parameters['resetting.template'].".text.twig";
+        }
+        else {
+            $template = $this->parameters['resetting.template'].".html.twig";
+        }
+        $url = $this->router->generate('cuteflow_dashboard', array(), true);
+        $rendered = $this->templating->render($template, array(
+            'user' => $user,
+            'homepage' => $url,
+            'footer' => $this->settingsManager->getSettings()->getEmailFooter()
+        ));
+        $this->sendEmailMessage($rendered, $user->getEmail());
+    }
+
+
+    /**
+     * @param CuteFlow\CoreBundle\Entity\User $user
+     * @return void
+     */
     public function sendWelcomeEmailMessage(User $user)
     {
         if ($this->settingsManager->getSettings()->getEmailFormat() == 'text/plain') {

@@ -8,3 +8,7 @@ app/config/parameters.ini
 .idea
 CuteFlow_V4.iml
 *.php~
+vendor/*
+web/*
+.gitmodules
+web/app_dev.php

@@ -1,0 +1,15 @@
+{% extends 'CuteFlowCoreBundle:Mail:mail_layout.html.twig' %}
+
+{% block cuteflow_email_subject %}[CuteFlow] - {{ "mail.title.request_resetting" | trans }}{% endblock %}
+
+{% block cuteflow_email_body %}
+
+<p>{{ "mail.title.request_resetting_information" | trans }}:</p>
+<ul>
+    <li>{{ "mail.label.username" | trans }}: {{ user.username }}</li>
+    <li>{{ "mail.label.confirmation_token" | trans }}: {{ user.confirmationToken }}</li>
+</ul>
+<br/>
+{{ "mail.label.login" | trans }}: <a href="{{ homepage }}">{{ homepage }}</a>
+
+{% endblock %}

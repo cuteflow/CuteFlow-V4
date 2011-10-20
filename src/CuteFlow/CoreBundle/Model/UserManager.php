@@ -22,6 +22,37 @@ class UserManager implements UserProviderInterface
         $this->encoderFactory = $encoderFactory;
     }
 
+    /**
+     * Generates the confirmation token if it is not set.
+     */
+    public function generateConfirmationToken(User $user)
+    {
+        $user->setConfirmationToken($this->generateToken());
+    }
+
+    /**
+     * Generates a token.
+     */
+    public function generateToken()
+    {
+        $bytes = false;
+        if (function_exists('openssl_random_pseudo_bytes') && 0 !== stripos(PHP_OS, 'win')) {
+            $bytes = openssl_random_pseudo_bytes(32, $strong);
+
+            if (true !== $strong) {
+                $bytes = false;
+            }
+        }
+
+        // let's just hope we got a good seed
+        if (false === $bytes) {
+            $bytes = hash('sha256', uniqid(mt_rand(), true), true);
+        }
+
+        return base_convert(bin2hex($bytes), 16, 36);
+    }
+
+
     public function updatePassword(User $user)
     {
         if (0 !== strlen($password = $user->getPlainPassword())) {

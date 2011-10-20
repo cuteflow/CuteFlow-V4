@@ -25,6 +25,10 @@ security:
         login:
             pattern:  ^/login$
             security: false
+
+        user:
+            pattern: /user
+            security: false
             
         main:
             pattern:      /.*

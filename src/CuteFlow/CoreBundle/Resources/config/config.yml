@@ -23,7 +23,7 @@ services:
             - @router
             - @cuteflow.settings_manager
             - @templating
-            - { welcome.template: "CuteFlowCoreBundle:Mail:welcome" }
+            - { welcome.template: "CuteFlowCoreBundle:Mail:welcome", resetting.template: "CuteFlowCoreBundle:Mail:resetting" }
 
 twig:
     form:
