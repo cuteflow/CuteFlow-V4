@@ -1,23 +1,23 @@
 {% extends 'CuteFlowCoreBundle::admin.html.twig' %}
 
-{% block title %}{{ parent() }} - {% trans %}Administration{% endtrans %}{% endblock %}
+{% block title %}{{ parent() }} - {{ "basic.administration" | trans }}{% endblock %}
 
 {% block contextual %}
-    <a class="icon icon-add" href="{{ path('cuteflow_admin_usergroup_new') }}">{% trans %}New usergroup{% endtrans %}</a>
+    <a class="icon icon-add" href="{{ path('cuteflow_admin_usergroup_new') }}">{{ "user.usergroup.new" | trans }}</a>
 {% endblock %}
 
 {% block body %}
-    <h2>{% trans %}Usergroups{% endtrans %}</h2>
+    <h2>{{ "user.usergroup.label" | trans }}</h2>
      {% if (app.session.hasFlash('saved.successful')) %}
         <div class="flash notice">
-            {% trans %}Group successfully saved{% endtrans %}
+            {{ "user.usergroup.saved_successfully" | trans }}
         </div>
         <br/>
     {% endif %}
 
     {% if (app.session.hasFlash('deleted.successful')) %}
         <div class="flash notice">
-            {% trans %}Group successfully deleted{% endtrans %}
+            {{ "user.usergroup.deleted_successfully" | trans }}
         </div>
         <br/>
     {% endif %}
@@ -25,7 +25,7 @@
     <table class="list">
       <thead>
         <tr>
-          <th>{% trans %}Name{% endtrans %}</th>
+          <th>{{ "user.usergroup.name" | trans }}</th>
           <th>&nbsp;</th>
         </tr>
       </thead>
@@ -34,8 +34,8 @@
         <tr class="{{ cycle(['odd', 'even'], loop.index) }}">
             <td>{{ entity.name }}</td>
              <td>
-                <small><a href="{{ path('cuteflow_admin_usergroup_edit', {'id': entity.id}) }}" class="icon icon-edit">{% trans %}Edit{% endtrans %}</a></small>
-                <small><a href="{{ path('cuteflow_admin_usergroup_delete', {'id': entity.id}) }}" onclick="return confirm('{% trans %}Do you really want to delete this group?{% endtrans %}')" class="icon icon-del">{% trans %}Delete{% endtrans %}</a></small>
+                <small><a href="{{ path('cuteflow_admin_usergroup_edit', {'id': entity.id}) }}" class="icon icon-edit">{{ "general.edit" | trans }}</a></small>
+                <small><a href="{{ path('cuteflow_admin_usergroup_delete', {'id': entity.id}) }}" onclick="return confirm('{{ "user.usergroup.really_delete" | trans }}')" class="icon icon-del">{{ "general.delete" | trans }}</a></small>
             </td>
         </tr>
     {% endfor %}

@@ -2,270 +2,346 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="1">
-                <source>Dashboard</source>
-                <target>Übersicht</target>
-            </trans-unit>
-            <trans-unit id="2">
-                <source>Workflows</source>
-                <target>Umläufe</target>
-            </trans-unit>
-            <trans-unit id="3">
-                <source>Reports</source>
-                <target>Auswertungen</target>
-            </trans-unit>
-            <trans-unit id="4">
-                <source>Workflow Management</source>
-                <target>Umlaufverwaltung</target>
-            </trans-unit>
-            <trans-unit id="5">
-                <source>My account</source>
+            <trans-unit id="basic.my_account">
+                <source>basic.my_account</source>
                 <target>Mein Account</target>
             </trans-unit>
-            <trans-unit id="6">
-                <source>Sign out</source>
+            <trans-unit id="basic.sign_out">
+                <source>basic.sign_out</source>
                 <target>Abmelden</target>
             </trans-unit>
-            <trans-unit id="7">
-                <source>Logged in as</source>
+            <trans-unit id="basic.logged_in_as">
+                <source>basic.logged_in_as</source>
                 <target>Angemeldet als</target>
             </trans-unit>
-            <trans-unit id="8">
-                <source>Home</source>
+            <trans-unit id="basic.home">
+                <source>basic.home</source>
                 <target>Startseite</target>
             </trans-unit>
-            <trans-unit id="9">
-                <source>Administration</source>
+            <trans-unit id="basic.administration">
+                <source>basic.administration</source>
                 <target>Administration</target>
             </trans-unit>
-            <trans-unit id="10">
-                <source>Settings</source>
-                <target>Einstellungen</target>
-            </trans-unit>
-            <trans-unit id="11">
-                <source>Filter</source>
-                <target>Filter</target>
-            </trans-unit>
-            <trans-unit id="12">
-                <source>Help</source>
+            <trans-unit id="basic.help">
+                <source>basic.help</source>
                 <target>Hilfe</target>
             </trans-unit>
-            <trans-unit id="13">
-                <source>User</source>
-                <target>Benutzer</target>
+            <trans-unit id="layout.dashboard">
+                <source>layout.dashboard</source>
+                <target>Übersicht</target>
             </trans-unit>
-            <trans-unit id="14">
-                <source>System information</source>
-                <target>Systeminformationen</target>
+            <trans-unit id="layout.workflows">
+                <source>layout.workflows</source>
+                <target>Umläufe</target>
             </trans-unit>
-            <trans-unit id="15">
-                <source>Userinterface</source>
-                <target>Benutzeroberfläche</target>
+            <trans-unit id="layout.reports">
+                <source>layout.reports</source>
+                <target>Auswertungen</target>
             </trans-unit>
-            <trans-unit id="16">
-                <source>Default language</source>
-                <target>Standardsprache</target>
+            <trans-unit id="layout.workflow_management">
+                <source>layout.workflow_management</source>
+                <target>Umlaufverwaltung</target>
             </trans-unit>
-            <trans-unit id="17">
-                <source>Default theme</source>
-                <target>Standardthema</target>
-            </trans-unit>
-            <trans-unit id="18">
-                <source>Userformat</source>
-                <target>Benutzerformat</target>
-            </trans-unit>
-            <trans-unit id="19">
-                <source>Use Gravatar user icons</source>
-                <target>Gravatar-Benutzer-Icons verwenden</target>
-            </trans-unit>
-            <trans-unit id="20">
-                <source>Email</source>
-                <target>E-Mail</target>
-            </trans-unit>
-            <trans-unit id="21">
-                <source>Workflow</source>
-                <target>Workflow</target>
-            </trans-unit>
-            <trans-unit id="22">
-                <source>Authentication</source>
-                <target>Authentifizierung</target>
-            </trans-unit>
-            <trans-unit id="23">
-                <source>General</source>
-                <target>Allgemein</target>
-            </trans-unit>
-            <trans-unit id="24">
-                <source>Usergroups</source>
-                <target>Benutzergruppen</target>
-            </trans-unit>
-            <trans-unit id="25">
-                <source>Host</source>
-                <target>Server</target>
-            </trans-unit>
-            <trans-unit id="26">
-                <source>Port</source>
-                <target>Port</target>
-            </trans-unit>
-            <trans-unit id="27">
-                <source>Username</source>
-                <target>Benutzername</target>
-            </trans-unit>
-            <trans-unit id="28">
-                <source>Password</source>
-                <target>Passwort</target>
-            </trans-unit>
-            <trans-unit id="29">
-                <source>Emission email address</source>
-                <target>Ausgehende E-Mail Adresse</target>
-            </trans-unit>
-            <trans-unit id="30">
-                <source>Email format</source>
-                <target>E-Mail Format</target>
-            </trans-unit>
-            <trans-unit id="31">
-                <source>Email footer</source>
-                <target>E-Mail Fußzeile</target>
-            </trans-unit>
-            <trans-unit id="32">
-                <source>Plain</source>
-                <target>Text</target>
-            </trans-unit>
-            <trans-unit id="33">
-                <source>HTML</source>
-                <target>HTML</target>
-            </trans-unit>
-            <trans-unit id="34">
-                <source>SMTP-Settings</source>
-                <target>SMTP-Einstellungen</target>
-            </trans-unit>
-            <trans-unit id="35">
-                <source>Send-Settings</source>
-                <target>Versandeinstellungen</target>
-            </trans-unit>
-            <trans-unit id="36">
-                <source>Edit user</source>
-                <target>Benutzer bearbeiten</target>
-            </trans-unit>
-            <trans-unit id="37">
-                <source>Save</source>
-                <target>Speichern</target>
-            </trans-unit>
-            <trans-unit id="38">
-                <source>Back to list</source>
-                <target>Zurück zur Liste</target>
-            </trans-unit>
-            <trans-unit id="39">
-                <source>User successfully saved</source>
-                <target>Benutzer erfolgreich gespeichert</target>
-            </trans-unit>
-            <trans-unit id="40">
-                <source>Edit</source>
-                <target>Bearbeiten</target>
-            </trans-unit>
-            <trans-unit id="41">
-                <source>Delete</source>
-                <target>Löschen</target>
-            </trans-unit>
-            <trans-unit id="42">
-                <source>User successfully deleted</source>
-                <target>Benutzer erfolgreich gelöscht</target>
-            </trans-unit>
-            <trans-unit id="43">
-                <source>Do you really want to delete this user?</source>
-                <target>Wollen Sie diesen Benutzer wirklich löschen?</target>
-            </trans-unit>
-            <trans-unit id="44">
-                <source>Has Admin-Rights</source>
-                <target>Besitzt Admin-Rechte</target>
-            </trans-unit>
-            <trans-unit id="45">
-                <source>Firstname</source>
-                <target>Vorname</target>
-            </trans-unit>
-            <trans-unit id="46">
-                <source>Lastname</source>
-                <target>Nachname</target>
-            </trans-unit>
-            <trans-unit id="47">
-                <source>Last login</source>
-                <target>Letzte Anmeldung</target>
-            </trans-unit>
-            <trans-unit id="48">
-                <source>New user</source>
-                <target>Neuer Benutzer</target>
-            </trans-unit>
-            <trans-unit id="49">
-                <source>The password fields must match</source>
-                <target>Die Passwörter müssen übereinstimmen</target>
-            </trans-unit>
-            <trans-unit id="50">
-                <source>Activity</source>
-                <target>Aktivität</target>
-            </trans-unit>
-            <trans-unit id="51">
-                <source>Registered on</source>
-                <target>Registriert am</target>
-            </trans-unit>
-            <trans-unit id="52">
-                <source>Information</source>
-                <target>Informationen</target>
-            </trans-unit>
-            <trans-unit id="53">
-                <source>Root-Path</source>
-                <target>Wurzelverzeichnis</target>
-            </trans-unit>
-            <trans-unit id="54">
-                <source>Database</source>
-                <target>Datenbank</target>
-            </trans-unit>
-            <trans-unit id="55">
-                <source>Reset Filter</source>
-                <target>Filter zurücksetzen</target>
-            </trans-unit>
-            <trans-unit id="56">
-                <source>Previous</source>
-                <target>Zurück</target>
-            </trans-unit>
-            <trans-unit id="57">
-                <source>Next</source>
-                <target>Weiter</target>
-            </trans-unit>
-            <trans-unit id="58">
-                <source>Encryption</source>
-                <target>Verschlüsselung</target>
-            </trans-unit>
-            <trans-unit id="59">
-                <source>Language</source>
-                <target>Sprache</target>
-            </trans-unit>
-            <trans-unit id="60">
-                <source>Theme</source>
-                <target>Thema</target>
-            </trans-unit>
-            <trans-unit id="61">
-                <source>Account successfully saved</source>
-                <target>Account erfolgreich gespeichert</target>
-            </trans-unit>
-            <trans-unit id="62">
-                <source>My Account</source>
+            <trans-unit id="account.title.my_account">
+                <source>account.title.my_account</source>
                 <target>Mein Account</target>
             </trans-unit>
-            <trans-unit id="63">
-                <source>New usergroup</source>
+            <trans-unit id="account.header.my_account">
+                <source>account.header.my_account</source>
+                <target>Mein Account</target>
+            </trans-unit>
+            <trans-unit id="account.message.account_successfully_saved">
+                <source>account.message.account_successfully_saved</source>
+                <target>Account erfolgreich gespeichert</target>
+            </trans-unit>
+            <trans-unit id="account.label.username">
+                <source>account.label.username</source>
+                <target>Benutzername</target>
+            </trans-unit>
+            <trans-unit id="account.button.save">
+                <source>account.button.save</source>
+                <target>Speichertn</target>
+            </trans-unit>
+            <trans-unit id="account.header.information">
+                <source>account.header.information</source>
+                <target>Informationen</target>
+            </trans-unit>
+            <trans-unit id="account.label.registered_on">
+                <source>account.label.registered_on</source>
+                <target>Registriert am</target>
+            </trans-unit>
+            <trans-unit id="account.label.last_login">
+                <source>account.label.last_login</source>
+                <target>Letzter Login</target>
+            </trans-unit>
+            <trans-unit id="account.header.activity">
+                <source>account.header.activity</source>
+                <target>Aktivität</target>
+            </trans-unit>
+            <trans-unit id="admin.title.smtp_settings">
+                <source>admin.title.smtp_settings</source>
+                <target>SMTP-Einstellungen</target>
+            </trans-unit>
+            <trans-unit id="admin.title.send_settings">
+                <source>admin.title.send_settings</source>
+                <target>Versandeinstellungen</target>
+            </trans-unit>
+            <trans-unit id="admin.button.save">
+                <source>admin.button.save</source>
+                <target>Speichern</target>
+            </trans-unit>
+            <trans-unit id="admin.title.settings">
+                <source>admin.title.settings</source>
+                <target>Einstellungen</target>
+            </trans-unit>
+            <trans-unit id="admin.label.general">
+                <source>admin.label.general</source>
+                <target>Allgemein</target>
+            </trans-unit>
+            <trans-unit id="admin.label.email">
+                <source>admin.label.email</source>
+                <target>E-Mail</target>
+            </trans-unit>
+            <trans-unit id="admin.label.workflow">
+                <source>admin.label.workflow</source>
+                <target>Umlauf</target>
+            </trans-unit>
+            <trans-unit id="admin.message.settings_successfully_saved">
+                <source>admin.message.settings_successfully_saved</source>
+                <target>Einstellungen erfolgreich gespeichert</target>
+            </trans-unit>
+            <trans-unit id="admin.title.system_information">
+                <source>admin.title.system_information</source>
+                <target>Systeminformationen</target>
+            </trans-unit>
+            <trans-unit id="admin.label.version">
+                <source>admin.label.version</source>
+                <target>Version</target>
+            </trans-unit>
+            <trans-unit id="admin.label.php">
+                <source>admin.label.php</source>
+                <target>PHP</target>
+            </trans-unit>
+            <trans-unit id="admin.label.root_path">
+                <source>admin.label.root_path</source>
+                <target>Wurzelverzeichnis</target>
+            </trans-unit>
+            <trans-unit id="admin.label.database">
+                <source>admin.label.database</source>
+                <target>Datenbank</target>
+            </trans-unit>
+            <trans-unit id="admin.title.workflow">
+                <source>admin.title.workflow</source>
+                <target>Umlauf</target>
+            </trans-unit>
+            <trans-unit id="admin.system_information">
+                <source>admin.system_information</source>
+                <target>Systeminformationen</target>
+            </trans-unit>
+            <trans-unit id="admin.user">
+                <source>admin.user</source>
+                <target>Benutzer</target>
+            </trans-unit>
+            <trans-unit id="admin.workflow_groups">
+                <source>admin.workflow_groups</source>
+                <target>Umlaufgruppen</target>
+            </trans-unit>
+            <trans-unit id="admin.settings">
+                <source>admin.settings</source>
+                <target>Einstellungen</target>
+            </trans-unit>
+            <trans-unit id="dashboard.title.dashboard">
+                <source>dashboard.title.dashboard</source>
+                <target>Übersicht"</target>
+            </trans-unit>
+            <trans-unit id="dashboard.header.dashboard">
+                <source>dashboard.header.dashboard</source>
+                <target>Übersicht</target>
+            </trans-unit>
+            <trans-unit id="mail.title.your_account_information">
+                <source>mail.title.your_account_information</source>
+                <target>Ihre Account-Informationen</target>
+            </trans-unit>
+            <trans-unit id="mail.title.your_cuteflow_account_information">
+                <source>mail.title.your_cuteflow_account_information</source>
+                <target>Ihre CuteFlow Account Informationen</target>
+            </trans-unit>
+            <trans-unit id="mail.label.username">
+                <source>mail.label.username</source>
+                <target>Benutzername</target>
+            </trans-unit>
+            <trans-unit id="mail.label.password">
+                <source>mail.label.password</source>
+                <target>Passwort</target>
+            </trans-unit>
+            <trans-unit id="mail.label.login">
+                <source>mail.label.login</source>
+                <target>Anmelden</target>
+            </trans-unit>
+            <trans-unit id="reports.title.reports">
+                <source>reports.title.reports</source>
+                <target>Auswertungen</target>
+            </trans-unit>
+            <trans-unit id="reports.header.reports">
+                <source>reports.header.reports</source>
+                <target>Auswertungen</target>
+            </trans-unit>
+            <trans-unit id="security.label.username">
+                <source>security.label.username</source>
+                <target>Benutzername</target>
+            </trans-unit>
+            <trans-unit id="security.label.password">
+                <source>security.label.password</source>
+                <target>Passwort</target>
+            </trans-unit>
+            <trans-unit id="security.label.remember_me">
+                <source>security.label.remember_me</source>
+                <target>Angemeldet bleiben</target>
+            </trans-unit>
+            <trans-unit id="security.label.lost_password">
+                <source>security.label.lost_password</source>
+                <target>Passwort vergessen</target>
+            </trans-unit>
+            <trans-unit id="user.title.administration">
+                <source>user.title.administration</source>
+                <target>Administration</target>
+            </trans-unit>
+            <trans-unit id="user.header.edit_user">
+                <source>user.header.edit_user</source>
+                <target>User bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="user.button.save">
+                <source>user.button.save</source>
+                <target>Speichern</target>
+            </trans-unit>
+            <trans-unit id="user.label.back_to_list">
+                <source>user.label.back_to_list</source>
+                <target>Zurück zu Liste</target>
+            </trans-unit>
+            <trans-unit id="user.header.user">
+                <source>user.header.user</source>
+                <target>Benutzer</target>
+            </trans-unit>
+            <trans-unit id="user.message.user_successfully_saved">
+                <source>user.message.user_successfully_saved</source>
+                <target>Benutzer erfolgreich gespeichert</target>
+            </trans-unit>
+            <trans-unit id="user.label.firstname">
+                <source>user.label.firstname</source>
+                <target>Vorname</target>
+            </trans-unit>
+            <trans-unit id="user.label.lastname">
+                <source>user.label.lastname</source>
+                <target>Nachname</target>
+            </trans-unit>
+            <trans-unit id="user.label.email">
+                <source>user.label.email</source>
+                <target>E-Mail</target>
+            </trans-unit>
+            <trans-unit id="user.label.username">
+                <source>user.label.username</source>
+                <target>Benutzername</target>
+            </trans-unit>
+            <trans-unit id="user.label.administrator">
+                <source>user.label.administrator</source>
+                <target>Administrator</target>
+            </trans-unit>
+            <trans-unit id="user.label.last_login">
+                <source>user.label.last_login</source>
+                <target>Letzte Anmeldung</target>
+            </trans-unit>
+            <trans-unit id="user.label.edit">
+                <source>user.label.edit</source>
+                <target>Bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="user.message.really_delete">
+                <source>user.message.really_delete</source>
+                <target>Wollen Sie diesen Benutzer wirklich löschen?</target>
+            </trans-unit>
+            <trans-unit id="user.label.delete">
+                <source>user.label.delete</source>
+                <target>Löschen</target>
+            </trans-unit>
+            <trans-unit id="user.header.filter">
+                <source>user.header.filter</source>
+                <target>Filter</target>
+            </trans-unit>
+            <trans-unit id="user.button.filter">
+                <source>user.button.filter</source>
+                <target>Filtern</target>
+            </trans-unit>
+            <trans-unit id="user.button.reset_filter">
+                <source>user.button.reset_filter</source>
+                <target>Filzer zurücksetzen</target>
+            </trans-unit>
+            <trans-unit id="account.label.email">
+                <source>account.label.email</source>
+                <target>E-Mail</target>
+            </trans-unit>
+            <trans-unit id="user.label.new_user">
+                <source>user.label.new_user</source>
+                <target>Neuer Benutzer</target>
+            </trans-unit>
+            <trans-unit id="admin.header.settings">
+                <source>admin.header.settings</source>
+                <target>Einstellungen</target>
+            </trans-unit>
+            <trans-unit id="user.validation.password.match">
+                <source>user.validation.password.match</source>
+                <target>Die Passwörter müssen übereinstimmen.</target>
+            </trans-unit>
+            <trans-unit id="admin.settings.email.encryption">
+                <source>admin.settings.email.encryption</source>
+                <target>Verschlüsselung</target>
+            </trans-unit>
+            <trans-unit id="admin.settings.theme">
+                <source>admin.settings.theme</source>
+                <target>Thema</target>
+            </trans-unit>
+            <trans-unit id="user.account.my">
+                <source>user.account.my</source>
+                <target>Mein Account</target>
+            </trans-unit>
+            <trans-unit id="user.usergroup.new">
+                <source>user.usergroup.new</source>
                 <target>Neue Benutzergruppe</target>
             </trans-unit>
-            <trans-unit id="64">
-                <source>Edit usergroup</source>
+            <trans-unit id="user.usergroup.edit">
+                <source>user.usergroup.edit</source>
                 <target>Benutzergruppe bearbeiten</target>
             </trans-unit>
-            <trans-unit id="65">
-                <source>Do you really want to delete this group</source>
-                <target>Wollen Sie diese Gruppe wirklich löschen</target>
+            <trans-unit id="user.usergroup.really_delete">
+                <source>user.usergroup.really_delete</source>
+                <target>Wollen Sie diese Gruppe wirklich löschen?</target>
             </trans-unit>
-            <trans-unit id="66">
-                <source>Usergroup</source>
+            <trans-unit id="user.usergroup.label">
+                <source>user.usergroup.label</source>
                 <target>Benutzergruppe</target>
             </trans-unit>
+            <trans-unit id="general.save">
+                <source>general.save</source>
+                <target>Speichern</target>
+            </trans-unit>
+            <trans-unit id="user.usergroup.saved_successfully">
+                <source>user.usergroup.saved_successfully</source>
+                <target>Grupper erfolgreich gespeichert</target>
+            </trans-unit>
+            <trans-unit id="user.usergroup.deleted_successfully">
+                <source>user.usergroup.deleted_successfully</source>
+                <target>Gruppe erfolgreich gelöscht</target>
+            </trans-unit>
+            <trans-unit id="user.usergroup.name">
+                <source>user.usergroup.name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="general.edit">
+                <source>general.edit</source>
+                <target>Bearbeiten</target>
+            </trans-unit><trans-unit id="general.delete">
+                <source>general.delete</source>
+                <target>Löschen</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>
