@@ -1,11 +1,11 @@
 {% extends 'CuteFlowCoreBundle::admin.html.twig' %}
 
-{% block title %}{{ parent() }} - {% trans %}Administration{% endtrans %}{% endblock %}
+{% block title %}{{ parent() }} - {{ "basic.administration" | trans }}{% endblock %}
 
 {% block sidebarclass %}class="nosidebar"{% endblock %}
 
 {% block body %}
-    <h2>{% trans %}New usergroup{% endtrans %}</h2>
+    <h2>{{ "user.usergroup.new" | trans }}</h2>
 
     {% if form_errors(form) %}
         <div class="flash error">
@@ -23,7 +23,7 @@
         </div>
 
         {{ form_rest(form) }}
-        <input type="submit" value="{% trans %}Save{% endtrans %}" name="commit"/>
-        &nbsp;&nbsp;&nbsp;<a href="{{ path('cuteflow_admin_usergroup') }}">{% trans %}Back to list{% endtrans %}</a>
+        <input type="submit" value="{{ "general.save" | trans }}" name="commit"/>
+        &nbsp;&nbsp;&nbsp;<a href="{{ path('cuteflow_admin_usergroup') }}">{{ "generale.back_to_list" | trans }}</a>
     </form>
 {% endblock %}
