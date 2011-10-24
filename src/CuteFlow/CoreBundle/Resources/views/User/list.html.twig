@@ -59,7 +59,7 @@
                 <td>{{ user.lastLogin | localedate() }}</td>
                 <td>
                     <small><a href="{{ path('cuteflow_admin_user_edit', {'id': user.id}) }}" class="icon icon-edit">{{ "user.label.edit" | trans }}</a></small>
-                    <small><a href="{{ path('cuteflow_admin_user_delete', {'id': user.id}) }}" onclick="return confirm('{{ "user.message.do_you_really_want_to_delete_this_user?" | trans }}')" class="icon icon-del">{{ "user.label.delete" | trans }}</a></small>
+                    <small><a href="{{ path('cuteflow_admin_user_delete', {'id': user.id}) }}" onclick="return confirm('{{ "user.message.really_delete" | trans }}')" class="icon icon-del">{{ "user.label.delete" | trans }}</a></small>
                 </td>
             </tr>
         {% endfor %}

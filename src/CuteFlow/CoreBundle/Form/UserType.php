@@ -33,7 +33,7 @@ class UserType extends AbstractType
 
         $builder->add('plainPassword', 'repeated', array(
                                     'type'=>'password',
-                                    'invalid_message' => 'The password fields must match',
+                                    'invalid_message' => 'user.validation.password.match',
                                     'options' => array('label' => 'Password'),
                                     'error_bubbling'=>true,
                                           ));
