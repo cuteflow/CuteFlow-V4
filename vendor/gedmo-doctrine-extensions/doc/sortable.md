@@ -1,4 +1,4 @@
-# Sortable behavior extension for Doctrine 2
+# Sortable behavior extension for Doctrine2
 
 **Sortable** behavior will maintain a position field for ordering
 entities.
@@ -9,6 +9,9 @@ Features:
 - Group entity ordering by one or more fields
 - Can be nested with other behaviors
 - Annotation, Yaml and Xml mapping support for extensions
+
+[blog_reference]: http://gediminasm.org/article/sortable-behavior-extension-for-doctrine2 "Sortable extension will enable ordering on any entity or its relation"
+[blog_test]: http://gediminasm.org/test "Test extensions on this blog"
 
 **Notice:**
 
@@ -81,6 +84,9 @@ To attach the **Sortable Listener** to your event system:
 you need to identify entity as being Sortable. The metadata is loaded only once then
 cache is activated
 
+**Notice:** that you should register SortableRepository (or a subclass) as the repository in the Entity
+annotation to benefit from its query methods.
+
     namespace Entity;
     
     use Gedmo\Mapping\Annotation as Gedmo;
@@ -88,7 +94,7 @@ cache is activated
     
     /**
      * @ORM\Table(name="items")
-     * @ORM\Entity
+     * @ORM\Entity(repositoryClass="Gedmo\Sortable\Entity\Repository\SortableRepository")
      */
     class Item
     {

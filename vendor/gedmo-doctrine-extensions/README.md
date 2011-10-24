@@ -7,6 +7,17 @@
 **Note:** Use 2.1.x tag in order to use extensions based on Doctrine2.1.x versions. Currently
 master branch is based on 2.2.x versions and may not work with 2.1.x components
 
+**2011-10-23**
+
+- [@everzet](https://github.com/everzet) has contributed the **Translator** behavior, which indeed
+is a more explicit way of handling translations in your projects
+
+**2011-10-08**
+
+- Thanks to [@acasademont](https://github.com/acasademont) Translatable now does not store translations for default locale. It is always left as original record value.
+So be sure you do not change your default locale per project or per data migration. This way
+it is more rational and unnecessary to store it additionaly in translation table.
+
 **2011-09-24**
 
 - Sluggable was refactored with a **BC break** for the sake of simplicity it now uses a single @Slug annotation.
@@ -26,6 +37,7 @@ records being flushed in the behavioral way. List of extensions:
 - Timestampable - updates date fields on create, update and even property change.
 - Loggable - helps tracking changes and history of objects, also supports version managment.
 - Sortable - makes any document or entity sortable
+- Translator - explicit way to handle translations
 
 Currently these extensions support **Yaml**, **Annotation**  and **Xml** mapping. Additional mapping drivers
 can be easily implemented using Mapping extension to handle the additional metadata mapping.
@@ -53,6 +65,7 @@ List of extensions which support ODM
 - Timestampable
 - Loggable
 - Sortable
+- Translator
 
 All these extensions can be nested together and mapped in traditional ways - annotations,
 xml or yaml
@@ -76,6 +89,7 @@ To setup and run tests follow these steps:
 
 ### Contributors:
 
+- acasademont [acasademont](https://github.com/acasademont)
 - Lukas Botsch [lbotsch](http://github.com/lbotsch)
 - Daniel Gomes [danielcsgomes](http://github.com/danielcsgomes)
 - megabite [oscarballadares](http://github.com/oscarballadares)
