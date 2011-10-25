@@ -38,10 +38,10 @@ class Mailer
         else {
             $template = $this->parameters['resetting.template'].".html.twig";
         }
-        $url = $this->router->generate('cuteflow_dashboard', array(), true);
+        $url = $this->router->generate('cuteflow_user_resetting_reset', array('token' => $user->getConfirmationToken()), true);
         $rendered = $this->templating->render($template, array(
             'user' => $user,
-            'homepage' => $url,
+            'confirmationUrl' => $url,
             'footer' => $this->settingsManager->getSettings()->getEmailFooter()
         ));
         $this->sendEmailMessage($rendered, $user->getEmail());

@@ -7,9 +7,6 @@
 =============================================
 
 * {{ "mail.label.username" | trans }}: {{ user.username }}
-* {{ "mail.label.confirmation_token" | trans }}: {{ user.confirmationToken }}
-
-
-{{ "mail.label.login" | trans }}: {{ homepage }}
+* {{ "mail.label.user_resetting_reset_link" | trans }}:{{ confirmationUrl }} 
 
 {% endblock %}

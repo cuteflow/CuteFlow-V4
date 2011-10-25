@@ -12,7 +12,7 @@ services:
     cuteflow.user_manager:
         class: CuteFlow\CoreBundle\Model\UserManager
         arguments: [@security.encoder_factory, @doctrine.orm.entity_manager, 'CuteFlow\CoreBundle\Entity\User']
-
+ 
     cuteflow.settings_manager:
         class: CuteFlow\CoreBundle\Model\SettingsManager
         arguments: [@doctrine.orm.entity_manager, @mailer]
@@ -34,3 +34,4 @@ parameters:
     cuteflow.version: R4 - V.0.1.0
     cuteflow.languages: {de:1, en:1}
     cuteflow.pagesize.default: 25
+
