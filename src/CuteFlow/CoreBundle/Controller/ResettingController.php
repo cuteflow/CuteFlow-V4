@@ -9,8 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 use CuteFlow\CoreBundle\Entity\User;
-use CuteFlow\CoreBundle\Form\UserType;
+use CuteFlow\CoreBundle\Form\ResettingType;
 
 class ResettingController extends Controller
 {
@@ -64,13 +66,57 @@ class ResettingController extends Controller
           return $this->container->get('templating')->renderResponse('CuteFlowCoreBundle:Resetting:checkEmail.html.twig');
     }
     /**
-     * @Route("/user/resetting/reset", name="cuteflow_user_resetting_reset")
+     * @Route("/user/resetting/reset/{token}", name="cuteflow_user_resetting_reset")
      * @Template()
      *
      * @return array
      */
-    public function resetAction()
+    public function resetAction($token)
     {
-       return $this->container->get('templating')->renderResponse('CuteFlowCoreBundle:Resetting:request.html.twig');
+       //return $this->container->get('templating')->renderResponse('CuteFlowCoreBundle:Resetting:request.html.twig');
+       $user = $this->container->get('cuteflow.user_manager')->findUserByConfirmationToken($token);
+
+        if(null === $user){
+            throw new NotFoundHttpException(sprintf('The user with "confirmation token" does not exist for value "%s"', $token));
+        }
+        
+        
+        $resettingForm = $this->createForm(new ResettingType(), $user);
+        return array('form'=>$resettingForm->createView(),
+                     'token'=>$token);
     }
+    /**
+     * @Route("/user/resetting/update/{token}", name="cuteflow_user_resetting_update")
+     * @Template("CuteFlowCoreBundle:Resetting:reset.html.twig")
+     *
+     * @return array
+     */
+    public function updateAction($token)
+	{
+        $user = $this->container->get('cuteflow.user_manager')->findUserByConfirmationToken($token);
+
+        if(null === $user){
+            throw new NotFoundHttpException(sprintf('The user with "confirmation token" does not exist for value "%s"', $token));
+        }
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $resettingForm = $this->createForm(new resettingType(), $user);
+        $resettingForm->bindRequest($this->getRequest());
+
+       if ($resettingForm->isValid()) {
+
+            if ($user->getPlainPassword() != "") {
+                $user_manager = $this->get('cuteflow.user_manager');
+                $user_manager->updatePassword($user);
+                $user->setConfirmationToken(null);
+            }
+            $em->persist($user);
+            $em->flush();
+            return new RedirectResponse($this->container->get('router')->generate('cuteflow_login'));
+        }
+        return array('form'=>$resettingForm->createView(),
+                     'token'=>$token);
+
+	}
+
 }
