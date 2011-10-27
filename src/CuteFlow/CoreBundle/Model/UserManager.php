@@ -6,6 +6,7 @@ use CuteFlow\CoreBundle\Entity\User;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Doctrine\ORM\EntityManager;
 
 class UserManager implements UserProviderInterface
@@ -21,6 +22,16 @@ class UserManager implements UserProviderInterface
         $this->repository = $em->getRepository($class);
         $this->encoderFactory = $encoderFactory;
     }
+
+    /**
+     * Find User by confirmationToken
+     */
+    public function findUserByConfirmationToken($token)
+    {
+        $user = $this->repository->findOneBy(array('confirmationToken' => $token));
+
+        return $user;
+	}
 
     /**
      * Generates the confirmation token if it is not set.
